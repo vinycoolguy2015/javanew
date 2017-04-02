@@ -1,2 +1,2 @@
-# java-project
-Java Project for Jenkins Course
+# Multi branch pipeline with Jenkins
+
