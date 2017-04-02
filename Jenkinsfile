@@ -1,5 +1,8 @@
 pipeline {
     agent none
+    environment {
+	MAJOR_VERSION=1	
+    }	
     options {
 	    buildDiscarder(logRotator(numToKeepStr: '2',artifactNumToKeepStr:'1'))
     }
@@ -81,6 +84,8 @@ pipeline {
 		  echo "Merging development branch with master"  
 		  sh "git merge development"    
 		  sh "git push origin master"  
+		  sh "git tag rectangle-${env.MAJOR_VERSION}.${env.BUILD_NUMBER}" 
+		  sh "git push origin rectangle-${env.MAJOR_VERSION}.${env.BUILD_NUMBER}"  
 	    }
 	    
 	    }	    
